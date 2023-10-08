@@ -1,3 +1,7 @@
+#Scraping real time live data from url="https://coinmarketcap.com/", obtaining name and price of crypto and storing in a dictonary
+
+
+
 from bs4 import BeautifulSoup
 import requests
 
