@@ -45,27 +45,32 @@ def main():
 def get_title(doc):
     try:
         title=doc.find("span",{"id":"productTitle"},class_="a-size-large product-title-word-break").string.strip()
-        return title
+        
     
     #in the case where title cannot be found then return blank
     except(AttributeError):
-        return ""
+        title= ""
+    return title
     
     
 def get_prices(doc):
     try:
         price=doc.find("span",class_="a-offscreen").string.strip()
         
-        return price
+        
     
     except(AttributeError):
-        return ""
+        price= ""
+    return price
     
 def get_rating(doc):
     try:
         rating=doc.find("span",class_="a-icon-alt").string.strip()
+
+    except(AttributeError):
+        rating=""
         
-        return rating
+    return rating
 
 def get_stock(doc):
     try:
@@ -76,7 +81,6 @@ def get_stock(doc):
     
     return stock
     
-    except(AttributeError):
-        return ""
+
             
 print(main())
