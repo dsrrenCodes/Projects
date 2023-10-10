@@ -66,6 +66,15 @@ def get_rating(doc):
         rating=doc.find("span",class_="a-icon-alt").string.strip()
         
         return rating
+
+def get_stock(doc):
+    try:
+        stock=doc.find("span",class_="a-size-medium a-color-success").string.strip()
+        
+    except(AttributeError):
+        stock="Not Stock"
+    
+    return stock
     
     except(AttributeError):
         return ""
