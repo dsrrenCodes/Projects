@@ -36,7 +36,7 @@ def main():
             hmap["Title"].append(get_title(newdoc))
             hmap["Prices"].append(get_prices(newdoc))
             hmap["Rating"].append(get_rating(newdoc))
-            #hmap["Stock"].append()
+            hmap["Stock"].append(get_stock(newdoc))
         return hmap
 
 
