@@ -84,7 +84,8 @@ def get_rating(doc):
 
 def get_stock(doc):
     try:    
-        stock=doc.find("span",class_="a-size-medium a-color-success").string.strip()
+        stock = doc.find("div", attrs={'id':'availability'})
+        stock = available.find("span").string.strip()
 
     #in the case where availability of stock cannot be found then return blank
     except(AttributeError):
