@@ -8,7 +8,7 @@ def main():
         url="https://www.amazon.com/s?k=playstation+5&crid=2U1A61UK7E9W2&sprefix=playstatio%2Caps%2C642&ref=nb_sb_ss_ts-doa-p_1_10"
 
         #headers to ensure web is recieved by genuine user, #insert ur own user agent
-        HEADERS=({"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0","Accept-Language":"en-US, en;q=0.5"})
+        HEADERS=({"User-Agent":" ":"en-US, en;q=0.5"})
 
         #http request 
         req = requests.get(url,headers=HEADERS) 
@@ -77,7 +77,7 @@ def get_stock(doc):
         stock=doc.find("span",class_="a-size-medium a-color-success").string.strip()
         
     except(AttributeError):
-        stock="Not Stock"
+        stock="No Stock"
     
     return stock
     
