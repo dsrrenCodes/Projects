@@ -112,7 +112,7 @@ async def get_Def(word):
 
 
 # Your own token. Token can be obtained through @BotFather via Telegram
-TOKEN = "6661149589:AAGg4slmMpNfEwtMdqTpB6_du9lZmGIN-aY"
+TOKEN = "#UROWNTOKEN"
 bot = telepot.aio.Bot(TOKEN)
 
 # Setting up an asyncio event loop
