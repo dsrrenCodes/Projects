@@ -8,6 +8,10 @@ Leveraging the power of Selenium, this application skillfully extracts valuable 
 With the help of pandas, this program not only navigates LinkedIn effortlessly but also efficiently compiles the extracted data into a CSV file, making it easily readable in Excel or other compatible spreadsheet software.
 
 
+![Screenshot (6)](https://github.com/dsrrenCodes/webscrapingprojects/assets/120300295/2abd2188-f5d7-4b39-a237-ba439ed9c73d)
+
+
+
 
 
 ## Setting up Selenium
