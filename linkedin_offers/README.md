@@ -31,6 +31,8 @@ Requires the time, random and pandas modules
 
 ## Tutorial/Modifying the program
 
+Remember to change user agent. A list of user agents: https://user-agents.net/random
+
 To login to Linkedin, enter your user and password in line 12 and 14 respectively.
 
 To modify the program according to number of pages to scrap / type of job / country, follow through my comments in my code (under line 20 and 21) 
