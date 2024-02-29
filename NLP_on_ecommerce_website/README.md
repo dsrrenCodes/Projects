@@ -1,4 +1,4 @@
-![image](https://github.com/dsrrenCodes/webscrapingprojects/assets/120300295/144a0295-56fd-46fa-8ed4-03daf369b903)
+
 ## Project 
 
 This project represents my personal interest in integrating web scraping with sentiment analysis to gather a public consensus on a laptop that I am currently considering for purchase. Why watch youtube videos on it when i can code it!
