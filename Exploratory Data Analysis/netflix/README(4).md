@@ -1,0 +1,38 @@
+
+# EDA Project: Investigating Netflix
+
+My Analysis of the Netflix dataset using Pandas,Matplot and Seaborn
+
+
+## Analysis
+The analysis explores various aspects of data (in order), including:
+
+- Missing data Inputs
+
+- Genres containing the shortest films (less than 60 minutes)
+
+- Movie duration by year of release
+
+    
+- United States vs India: who produces the longest films
+
+
+   
+
+## Observations
+
+
+
+
+
+In the dataset, the most prominent missing data, arranged in descending order, pertains to the following fields: directors, cast, country, and lastly, the date added to Netflix.
+
+
+Short films, defined as those with a duration of less than 60 minutes, primarily belong to the genres in descending order: Documentaries, Children, and Stand-Up. This categorization aligns with the nature of these genres, as shorter durations are often preferred to maintain viewer engagement. For example, In the case of documentaries, excessively long durations could risk losing the interest of the audience, making brevity a crucial factor for viewer retention.
+
+
+Movies across all genres are now characterized by longer durations compared to the past, alongside an increase in the overall quantity of productions. This trend may be attributed to advancements in technology, enabling producers to create higher-quality content that appeals to a broader audience. As technology continues to evolve, it facilitates the production of more visually captivating and immersive cinematic experiences, thereby driving viewer interest. Additionally, the film industry has become increasingly lucrative, fostering a competitive environment that incentivizes the production of longer and more numerous movies as a means of maximizing profitability and capitalizing on the growing demand for diverse entertainment options.
+
+In the "others" category, which encompasses genres such as adventure and action, Indian films typically exhibit longer durations compared to those produced in the United States. However, it's worth noting that the United States also tends to have outlier movies with significantly longer runtimes than those from India. For instance, while the majority of documentaries from the United States tend to be lengthier than those from India, Indian productions often feature longer durations in the children's genre.
+
+This observation underscores the variability within each country's film industry and the influence of cultural and artistic preferences on movie lengths across different genres.
