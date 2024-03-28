@@ -1,2 +1,1 @@
-Hi, welcome to my portfilo.
-Each folder is an individual project by me!
+Greetings and welcome to my portfolio. Within each curated folder lies an exclusive showcase of my individual projects which showcases my interest for programming and data science!
