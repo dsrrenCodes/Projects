@@ -7,12 +7,28 @@ Users are able to input their news content directly into the webpage, allowing t
 
 
 ## Project Showcase
+Webpage:
+
+![Screenshot 2024-04-14 150542](https://github.com/dsrrenCodes/Projects/assets/120300295/ddad4c8f-05d5-4d49-b165-79a3f5a43a28)
+
+
+
+
 
 Fake news example:
 
 
 
+![fake example](https://github.com/dsrrenCodes/Projects/assets/120300295/00078def-81e2-4266-9299-c94c4f788ba7)
+
+
+
+
 Real news example:
+
+
+
+
 ## Description
 Since there are only 2 possible outcomes (fake/real) news, this is a typical case of Binary Classification. Hence, logistic regression is a suitable choice to build the model. 
 
@@ -27,14 +43,25 @@ Using the accuracy score metric: This model is  accurate in detecting fake news.
 body_analysis.ipynb
 - Using only news body content to train the model
 - This varient will be used for the web apped
+
+  
 title_author_analysis.ipynb
 - Using title + author name both to train the model
-webapp.py
+
+
+ webapp.py
 - For deployment of the model and implementing it to a interactive webpage
+
+
 body.txt 
 - Test case for my model
+
+
 title.txt
 - Test case for my model
+
+
+
 fakenews1.webp
 - Picture for my webpage
 
