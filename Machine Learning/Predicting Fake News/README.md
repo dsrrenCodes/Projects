@@ -29,6 +29,14 @@ Real news example:
 
 
 
+
+
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/f1641690-e6d6-4f5e-9b1a-f6602f5d1f1b)
+
+
+
+
+
 ## Description
 Since there are only 2 possible outcomes (fake/real) news, this is a typical case of Binary Classification. Hence, logistic regression is a suitable choice to build the model. 
 
