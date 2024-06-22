@@ -1,29 +1,24 @@
 
 # Cherp
+<img src="https://github.com/dsrrenCodes/Projects/assets/120300295/9bd63845-c0ab-4557-bc5d-76dfae5ed29f" alt="Screenshot 2024-06-22 153449" width="600"/>  
+<br><br>
 
-
-Your one stop solution to track your dear students!
-
-Cherp aims to integrate data-driven approaches into a single platform so that teachers can effectively and easily identify reasons behind students' performance levels as well as implement effective intervention.
-
+Cherp's mission is to provide AI-driven insights and proactive strategies with personalized data for each student for teachers.
 
 
 ## Awards and Recognition
 🏆 First Place Winner at GeekOut (GovTech) - 21/6/24
 
 
-## Features
 
-- Automated visualization tool for easy user access.
-- Collect, analyse and flag out "at risk" students.
-
-- Provides AI-driven insights and proactive strategies with personalized data for each student for teachers.
 
 
 
 
 
 ## Features
+
+- Cherp aims to integrate data-driven approaches into a single platform so that teachers can effectively and easily identify reasons behind students' performance levels as well as implement effective intervention.
 
 - Automated visualization tool for easy user access.
 - Collect, analyse and flag out "at risk" students.
@@ -35,6 +30,8 @@ Cherp aims to integrate data-driven approaches into a single platform so that te
 
 
 ## Demo
+
+[![YouTube](http://i.ytimg.com/vi/b4i2fMvf35Q/hqdefault.jpg)](https://www.youtube.com/watch?v=b4i2fMvf35Q)
 
 
 ## Technologies Used
@@ -56,6 +53,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
     - Amy
     - Ben
     - Ryan
-    - 
-    -
+    - Shrruti
+    - Kirithika
     
