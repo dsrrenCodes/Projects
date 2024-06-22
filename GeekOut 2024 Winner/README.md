@@ -33,6 +33,7 @@ Cherp's mission is to provide AI-driven insights and proactive strategies with p
 
 [![YouTube](http://i.ytimg.com/vi/b4i2fMvf35Q/hqdefault.jpg)](https://www.youtube.com/watch?v=b4i2fMvf35Q)
 
+Our full presentation slides can be found here https://shorturl.at/mbQI4
 
 ## Technologies Used
 
