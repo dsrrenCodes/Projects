@@ -1,0 +1,11 @@
+student_name,gender,class,sibs_size,p_size,a math,e math,bio,phy,chem,english,mother_tongue,fnn,geography,lit,dnt,monthly_household_income,num_of_cca,attendance_rate,profile_pic,img_1,img_2
+Helen Lee,F,4A,1,3,91,85,50,83,82,,93,77,91,94,79,8500,1,100%,girl.jpg,Helen_Lee_BG,Helen_Lee_BW
+Bob Robinson,F,4A,1,6,39,45,62,,52,58,68,61,70,47,,3000,3,100%,boy.jpg,Bob_Robinson_BG,Bob_Robinson_BW
+Charlie Thompson,M,4A,1,4,82,83,91,83,86,,92,,79,91,75,10000,1,100%,boy.jpg,Charlie_Thompson_BG,Charlie_Thompson_BW
+Eva Green,M,4A,3,3,83,78,77,92,77,87,83,70,76,94,76,7500,1,100%,girl.jpg,Eva_Green_BG,Eva_Green_BW
+Lucas Garcia,M,4A,0,2,36,49,,59,56,62,51,81,61,,69,8000,1,60%,boy.jpg,Lucas_Garcia_BG,Lucas_Garcia_BW
+Ava Smith,F,4A,1,6,89,76,94,78,82,92,88,77,,94,72,8800,1,100%,girl.jpg,Ava_Smith_BG,Ava_Smith_BW
+Helen Harris,F,4A,4,6,78,87,78,89,50,67,,69,71,,70,6100,1,100%,girl.jpg,Helen_Harris_BG,Helen_Harris_BW
+Olivia Garcia,M,4A,2,4,91,,91,90,93,91,91,81,78,77,,13000,1,100%,girl.jpg,Olivia_Garcia_BG,Olivia_Garcia_BW
+George Garcia,M,4A,1,4,92,87,78,,87,79,75,76,39,41,69,14200,1,100%,boy.jpg,George_Garcia_BG,George_Garcia_BW
+Olivia Brown,F,4A,4,3,93,86,,94,84,86,89,72,91,86,70,11800,1,100%,girl.jpg,Olivia_Brown_BG,Olivia_Brown_BW

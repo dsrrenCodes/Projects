@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <title>Teacher's Portal</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        *{
+    font-family: 'Poppins', sans-serif;margin: 0;padding: 0;
+        }
+        .navbar-custom {
+            background-color: white;
+        }
+        .navbar-custom .navbar-nav .nav-link {
+            color: black;
+        }
+        .navbar-custom .navbar-nav .nav-link:hover {
+            color: #343a40;
+        }
+        .content {
+            padding: 20px;
+        }
+        .class-cards {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            color: #ff7f50;
+            text-align: center;
+        }
+        .step img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand" href="#">
+            <img src="./static/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Cherp Logo">
+            Cherp
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">How to Use</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Feedback</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content" id="content">
+        <h1>Welcome Ms Ang!</h1>
+        <div class="class-cards">
+            <div class="card">
+                <h2>Class 3A</h2>
+                    <a href="/class-list">
+                        <button>View</button>
+                    </a>
+
+            </div>
+            <div class="card">
+                <h2>Class 3B</h2>
+                <button onclick="viewClass('3B')">Click to view</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showHome() {
+            document.getElementById('content').innerHTML = '<h1>Welcome Ms Ang!</h1>';
+        }
+
+        function showClasses() {
+            document.getElementById('content').innerHTML = `
+                <h1>Welcome Ms Ang!</h1>
+                <div class="class-cards">
+                    <div class="card">
+                        <h2>Class 3A</h2>
+                        <button onclick="viewClass('3A')">Click to view</button>
+                    </div>
+                    <div class="card">
+                        <h2>Class 3B</h2>
+                        <button onclick="viewClass('3B')">Click to view</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function viewClass(className) {
+            document.getElementById('content').innerHTML = `
+                <h1>Class ${className}</h1>
+                <div class="student-list">
+                    <p>Laura Tan</p>
+                    <p>Laura Tan</p>
+                    <p>Laura Tan</p>
+                    <p>Laura Tan</p>
+                </div>
+            `;
+        }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}

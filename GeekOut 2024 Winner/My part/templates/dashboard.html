@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Progress Dashboard</title>
+    
+    <!-- Bootstrap CSS link (CDN) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .highlight {
+            background-color: #FA8072; /* Light pink background for highlighting */
+        }
+        body {
+            background-color: #ffffff; /* Light gray background */
+            font-family: 'Arial', sans-serif; /* Use a readable font */
+        }
+        
+        .container {
+            max-width: 90%; /* Limit width for better readability */
+            padding: 20px; /* Add padding inside the container */
+            background-color: #F1F1F1; /* White background for content */
+            border-radius: 8px; /* Rounded corners for a modern look */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            margin: 30px auto; /* Center align and add space around the container */
+        }
+        
+        h1, h2 {
+            padding:15px;
+            text-align: center; /* Center align headings */
+            margin-bottom: 30px; /* Space below headings */
+        }
+        h1{
+            color:#F1F1F1;
+        }
+        
+        .chart-container {
+            text-align: center;
+            margin-top: 20px;
+            margin: 0 auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for charts */
+            border-radius: 6px; /* Rounded corners for charts */
+            background-color: white;
+        }
+    
+        .chart {
+            width: 80%;
+            height: auto;
+            min-width: 600px;
+            margin: 0 auto;
+        }
+
+        .table-responsive {
+            margin-top: 30px; 
+        }
+
+        .table {
+            margin:auto;
+            background-color: #fff; /* White background for the entire table */
+        }
+        
+        .table thead th {
+            text-align: center; /* Center align header text */
+            vertical-align: middle; /* Center align vertically */
+        }
+        
+        .table tbody td {
+            text-align: center; /* Center align table data */
+            vertical-align: middle; /* Center align vertically */
+        }
+        
+        .student-prog-header{
+            border-radius:10px;
+            background-color: #1C4E80; 
+        }
+        
+        .insights-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        .insights-box {
+            background-color: #e9f5ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #b3d4fc;
+        }
+
+        .insights-box p {
+            margin: 0 0 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #d1e7ff;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="student-prog-header"><b>4A Students' Progress Dashboard</b></h1>
+        
+        <!-- Chart container with Bootstrap styles -->
+        <div class="chart-container w-75">
+            <h2>Average Grade of Each Student</h2>
+            <img class="chart img-fluid" src="data:image/png;base64,{{ plot_data_uri }}" alt="Average Grade Chart">
+        </div>
+        
+        <!-- Table with Bootstrap table-responsive class -->
+        <div class="table-responsive">
+            <table class="table w-75 mt-4">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Ranking</th>
+                        <th>Student Name</th>
+                        <th>A Math</th>
+                        <th>E Math</th>
+                        <th>Biology</th>
+                        <th>Physics</th>
+                        <th>Chemistry</th>
+                        <th>English</th>
+                        <th>Mother Tongue</th>
+                        <th>FNN</th>
+                        <th>Geography</th>
+                        <th>Literature</th>
+                        <th>DNT</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.rank }}</td>
+                        <td>{{ student.student_name }}</td>
+                        {% for subject in grade_columns %}
+                            <td {% if student[subject] != 'N/A' %}
+                                class="{% if student[subject] | float >= 60 %}passing{% else %}highlight{% endif %}"
+                            {% endif %}>
+                                {% if student[subject] != 'N/A' %}
+                                    {{ student[subject] | round(0) | int }}
+                                {% else %}
+                                    N/A
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                        <td><a href="{{ url_for('student', student_id=loop.index0) }}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% if student %}
+            <div class="student-details">
+                <h2>{{ student.student_name }}</h2>
+                <p><strong>Gender:</strong> {{ student.gender }}</p>
+                <p><strong>Attendance Rate:</strong> {{ student.attendance_rate }}</p>
+                <p><strong>Number of CCAs:</strong> {{ student.num_of_cca }}</p>
+                <p><strong>Family Size:</strong> {{ student.sibs_size + student.p_size + 1 }}</p>
+                <p><strong>Household Income:</strong> {{ student.monthly_household_income }}</p>
+                <h3>Grades</h3>
+                <ul>
+                    {% for key, value in student.items() %}
+                        {% if key.startswith('score_') %}
+                            <li><strong>{{ key.replace('score_', '').capitalize() }}:</strong> {{ value }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <h3>Insights</h3>
+                <div class="insights-box">
+                    {% for insight in insights.split('\n') %}
+                        {% if insight.strip() %}
+                            <p>{{ insight }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

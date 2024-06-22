@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher's Portal Feedback Form</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff;
+        }
+        h1 {
+            color: #ff7f50;
+            text-align: center;
+        }
+        .navbar-custom {
+            background-color: white;
+        }
+        .navbar-custom .navbar-nav .nav-link {
+            color: black;
+        }
+        .navbar-custom .navbar-nav .nav-link:hover {
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand" href="#">
+            <img src="./static/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Cherp Logo">
+            Cherp
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">How to Use</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Feedback</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Feedback Form</h1>
+    <form onsubmit="submitFeedback(event)">
+        <div class="form-group">
+            <label for="easeOfUse">Rate the ease of use for checking flagged students (1-10):</label>
+            <input type="number" class="form-control" id="easeOfUse" min="1" max="10" required>
+        </div>
+        <div class="form-group">
+            <label for="clarityOfInformation">Rate the clarity of information provided (1-10):</label>
+            <input type="number" class="form-control" id="clarityOfInformation" min="1" max="10" required>
+        </div>
+        <div class="form-group">
+            <label for="supportFeatures">Rate the support features available for flagged students (1-10):</label>
+            <input type="number" class="form-control" id="supportFeatures" min="1" max="10" required>
+        </div>
+        <div class="form-group">
+            <label for="overallExperience">Rate your overall experience using the website (1-10):</label>
+            <input type="number" class="form-control" id="overallExperience" min="1" max="10" required>
+        </div>
+        <div class="form-group">
+            <label for="additionalFeedback">Additional feedback:</label>
+            <textarea class="form-control" id="additionalFeedback" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <script>
+        function submitFeedback(event) {
+            event.preventDefault();
+            document.body.innerHTML = `
+                <h1>Successful!</h1>
+                <p>Click <a href="javascript:window.location.reload();">here</a> to make another submission.</p>
+            `;
+        }
+    </script>
+</body>
+{%endblock%}
+
+
+
+

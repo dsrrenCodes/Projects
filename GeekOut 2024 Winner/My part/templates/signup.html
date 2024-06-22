@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <img src="{{ url_for('static', filename='../static/images/logo.png') }}" alt="Logo" style="width: 150px; margin-bottom: 20px;">
+    <form method="POST" action="{{ url_for('signup') }}">
+        <h1>Sign Up</h1>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
