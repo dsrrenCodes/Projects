@@ -12,3 +12,4 @@ Conducted Randomized Search to determine the best hyperparameters, resulting in 
 Utilized Streamlit for the front end web and Pickle to store my model.
 
 ## Project Showcase
+[![YouTube](http://i.ytimg.com/vi/wrHipHn3w1s/hqdefault.jpg)](https://www.youtube.com/watch?v=wrHipHn3w1s)
