@@ -12,6 +12,14 @@ The code can be found in my ipynb file.
 ## 1. What kind of Resale Flat is the most popular in Singapore?
 
 
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/8e7b1545-c049-4a54-ad7a-db70d6eede19)
+
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/1e2ce5b6-03e9-4087-ac96-0c445da1bf48)
+
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/761e5342-2579-4e0b-afcd-e379a64fac32)
+
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/f0f04896-e269-4255-95cc-eb75f5f7dcf8)
+
 
 
 
@@ -55,8 +63,13 @@ In conclusion, the most popular type of resale flat in Singapore from 2017 to 20
 ## 2. What are the trends in the resale price of "4 room" flats in Singapore over the years?
 
  
- 
- 
+ ![image](https://github.com/dsrrenCodes/Projects/assets/120300295/8579cb41-6447-43a7-ba6f-99c2570bbc8c)
+
+ ![image](https://github.com/dsrrenCodes/Projects/assets/120300295/db1b695a-7d4f-457c-ae90-f114b702d981)
+
+ ![image](https://github.com/dsrrenCodes/Projects/assets/120300295/bb9b6eab-3426-4ffd-a6bf-5cfe650cc50f)
+
+
  
  
  
@@ -122,11 +135,15 @@ In conclusion, there is an observable trend in decrease of "4 room" flat resale 
 ##  3. What are the average resale flat prices in the top 3 towns with the most number of resales and why do resale prices vary across the towns from 2017 to 2024?
 
 
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/1593a41b-001e-4e3d-bb64-427845ebeb32)
 
 
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/b85258e7-5bf6-4125-9335-0ff25ea10fc6)
 
 
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/13859d14-9599-44b4-a2b9-50d35c099377)
 
+![image](https://github.com/dsrrenCodes/Projects/assets/120300295/4ed80e1e-b579-439d-b8d1-4736057f7d3b)
 
 
 
