@@ -1,5 +1,7 @@
 Greetings and welcome to my portfolio. Within each curated folder lies an exclusive showcase of my individual projects which showcases my interest for programming and data science!
 
+1x hackathon winner
+
 Books currently reading:
 
 1. How to Prove It: A Structured Approach by Daniel J. Velleman
