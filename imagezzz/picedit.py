@@ -4,10 +4,20 @@ import matplotlib.image as mpimg
 
 
 def change_brightness(image, value):
-    return np.array([]) # to be removed when filling this function
+    new_img=image.copy()
+    #clip for extra precaution but the menu1 should check for proper user input
+    new_img=np.clip(new_img+value,0,255)
+    
+    return new_img
   
 def change_contrast(image, value):
-    return np.array([]) # to be removed when filling this function
+    new_img=image.copy()
+    contrast_f= (259*(value+255))/(255*(259-value))
+    new_img=contrast_f*(new_img-128)+128
+    #clipping for extraprecaution
+    new_img=np.clip(new_img,0,255)
+    return new_img
+    
 
 def grayscale(image):
     return np.array([]) # to be removed when filling this function
@@ -85,7 +95,7 @@ def display_image(image, mask):
 
 def menu():
 
-    def menu1():
+    def menu1(img,mask):
         
         while True:
             n=str(input("""
@@ -126,22 +136,59 @@ s          Save the current picture
 
                     except FileNotFoundError:
                         print(f'\n{filename} file name not found, please enter a valid file name.\n------------------------------------------------ ')
-                        menu1()
+                        menu1(img,mask)
                     
                     
                     break
 
                 case 's':
-                    pass
+                    try:
+                        location=input('\nEnter a filename (ending with .png/.jpg/.jpeg) you want to save to: \n')
+                        save_image(location,img)
+                        print('\nImage Succesfully Saved!\n')
+                    except:
+                        print('Something Went Wrong! Ensure your file ends with ".png/.jpg/.jpeg! Bringing you back to menu...')
+                        menu1(img,mask)
+                    
+
                     break
                 
                 case '1':
-                    pass
-                    break
+                    num=input('\nEnter Brightness Value (+/-): \n')
+                    try:
+                        
+                        num=int(num)
+                        if num<=-255 or num>=255:
+                            print(f'\n{num} is not a valid input! Please ensure your input is between -255 and +255. Bringing you back to menu...\n')
+                            menu1(img,mask)
+                        
+                        
+                    except:
+                        print(f'\n{num} is not a valid input! Bringing you back to menu...\n')
+                        menu1(img,mask)
+
+                    
+                    
+                    img = change_brightness(img,num)
+                    print('\nBrightness Changed Successfully!\n')
+                    continue
 
                 case '2':
-                    pass
-                    break
+                    num=input('\nEnter Contrast Value (+/-): \n')
+                    try:
+                        
+                        num=int(num)
+                        if num<=-255 or num>=255:
+                            print(f'\n{num} is not a valid input! Please ensure your input is between -255 and +255. Bringing you back to menu...\n')
+                            menu1(img,mask)
+                        
+                        
+                    except:
+                        print(f'\n{num} is not a valid input! Bringing you back to menu...\n')
+                        menu1(img,mask)
+                    img = change_contrast(img,num)
+                    print('\nContrast Changed Successfully!\n')
+                    continue
                 
                 case '3':
                     pass
@@ -175,7 +222,7 @@ s          Save the current picture
                     break
 
 #FIRST STEP_____________________________________
-    
+
     img = mask = np.array([]) 
     
     while True:
@@ -206,8 +253,9 @@ Please enter a correct input
                 filename=input("\nEnter the filename of the image to load: \n")
 
             try:
-
+                
                 img,mask= load_image(filename)
+                print('\nFile Loaded Successfully!\n')
 
             except FileNotFoundError:
                 print(f'\n{filename} file name not found, please enter a valid file name.\n------------------------------------------------ ')
@@ -215,7 +263,7 @@ Please enter a correct input
 
         
         
-        status=menu1()
+        status=menu1(img,mask)
         if status=='exit':
             break
         
