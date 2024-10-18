@@ -20,16 +20,65 @@ def change_contrast(image, value):
     
 
 def grayscale(image):
-    return np.array([]) # to be removed when filling this function
+    new_img=image.copy()
+    #need to iter the entire array to get RGB, then apply the formula
+    for i in range(new_img.shape[0]): #rows
+        for j in range(new_img.shape[1]): #cols
+            r,g,b=new_img[i,j]
+            gray_value=int(0.3*r+0.59*g+0.11*b)
+            new_r,new_g,new_b=gray_value,gray_value,gray_value
+            #replacing original values to gray values
+            new_img[i,j]=[new_r,new_g,new_b]
+
+    return new_img
+    
 
 def blur_effect(image):
-    return np.array([]) # to be removed when filling this function
+    new_img=image.copy()
+    k=np.array([[0.0625, 0.125, 0.0625],[0.125, 0.25, 0.125],[0.0625, 0.125, 0.0625]])
+    #iter the entire array and we excluding the borders CUZ we do not wan to blur the frame so -1 !
+    for i in range(1, new_img.shape[0]-1):
+        for j in range(1,new_img.shape[1]-1):
+            #the 3x3 matrix around the current pixel to get the M 
+            M =image[i-1:i+2,j-1:j+2] #3x3 region
+            #c for color channe;ls
+            for c in range(new_img.shape[2]):
+                #not mat mul is element wise multiplication
+                new_img[i, j, c] =np.sum(M[:,:,c]*k)
+    return new_img
+    
 
 def edge_detection(image):
-    return np.array([]) # to be removed when filling this function
+    new_img=image.copy()
+    k=np.array([[-1,-1,-1],[-1,8,-1],[-1,-1,-1]])
+    #iter the entire array and we excluding the borders CUZ we do not wan to blur the frame so -1 !
+    for i in range(1, new_img.shape[0]-1):
+        for j in range(1,new_img.shape[1]-1):
+            #the 3x3 matrix around the current pixel to get M in the pdf doc
+            M = image[i-1:i+2,j-1:j+2] #3x3 region
+            
+            for c in range(new_img.shape[2]):
+                new_img[i, j, c] = np.sum(M[:,:,c]*k)
+    new_img+=128
+    new_img=np.clip(new_img,0,255)
+    return new_img
+    
 
 def embossed(image):
-    return np.array([]) # to be removed when filling this function
+    new_img=image.copy()
+    k=np.array([[-1,-1,0],[-1,0,1],[0,1,1]])
+    #iter the entire array and we excluding the borders CUZ we do not wan to blur the frame so -1 !
+    for i in range(1, new_img.shape[0]-1):
+        for j in range(1,new_img.shape[1]-1):
+            #the 3x3 matrix around the current pixel to get M in the pdf doc
+            M = image[i-1:i+2,j-1:j+2] #3x3 region
+            
+            for c in range(new_img.shape[2]):
+                new_img[i, j, c] = np.sum(M[:,:,c]*k)
+    new_img+=128
+    new_img=np.clip(new_img,0,255)
+    return new_img
+    
 
 def rectangle_select(image, x, y):
     return np.array([]) # to be removed when filling this function
@@ -171,7 +220,7 @@ s          Save the current picture
                     
                     img = change_brightness(img,num)
                     print('\nBrightness Changed Successfully!\n')
-                    continue
+                    break
 
                 case '2':
                     num=input('\nEnter Contrast Value (+/-): \n')
@@ -188,22 +237,49 @@ s          Save the current picture
                         menu1(img,mask)
                     img = change_contrast(img,num)
                     print('\nContrast Changed Successfully!\n')
-                    continue
+                    break
                 
                 case '3':
-                    pass
+                    try:
+                        img = grayscale(img)
+                        print('\nGrayScaled Effect Is Successful!\n')
+                        menu1(img,mask)
+                    except:
+                        print('\nSomething went wrong! Bring you back to menu...\n')
+                        menu1(img,mask)
                     break
                 
                 case '4':
-                    pass
+                    try:
+                        img=blur_effect(img)
+                        print('\\Blur Effect Is Successful!\n')
+                        menu1(img,mask)
+                    except:
+                        print('\nSomething went wrong! Bring you back to menu...\n')
+                        menu1(img,mask)
+
                     break
 
                 case '5':
-                    pass
+                    try:
+                        img=edge_detection(img)
+                        print('\n Edge Detection Effect Is Successful!\n')
+                        menu1(img,mask)
+                    except:
+                        print('\nSomething went wrong! Bring you back to menu...\n')
+                        menu1(img,mask)
+
                     break
 
                 case '6':
-                    pass
+                    try:
+                        img=embossed(img)
+                        print('\n Embossed Effect Is Successful!\n')
+                        menu1(img,mask)
+                    except:
+                        print('\nSomething went wrong! Bring you back to menu...\n')
+                        menu1(img,mask)
+
                     break
 
                 case '7':
@@ -243,7 +319,7 @@ Your choice: \n""").lower())
 Please enter a correct input
 ------------------------------------------------                      
 ''')
-                menu()
+                continue
             elif m=='e':
                 print('\nProgram Ended\n')
                 return None
@@ -257,9 +333,9 @@ Please enter a correct input
                 img,mask= load_image(filename)
                 print('\nFile Loaded Successfully!\n')
 
-            except FileNotFoundError:
+            except:
                 print(f'\n{filename} file name not found, please enter a valid file name.\n------------------------------------------------ ')
-                menu()
+                continue
 
         
         
