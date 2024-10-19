@@ -58,8 +58,9 @@ def edge_detection(image):
             M = image[i-1:i+2,j-1:j+2] #3x3 region
             
             for c in range(new_img.shape[2]):
-                new_img[i, j, c] = np.sum(M[:,:,c]*k)
-    new_img+=128
+                new_img[i, j, c] = np.sum(M[:,:,c]*k)+128
+    #new_img+=128
+    #cuz q need clip ;p
     new_img=np.clip(new_img,0,255)
     return new_img
     
@@ -74,8 +75,8 @@ def embossed(image):
             M = image[i-1:i+2,j-1:j+2] #3x3 region
             
             for c in range(new_img.shape[2]):
-                new_img[i, j, c] = np.sum(M[:,:,c]*k)
-    new_img+=128
+                new_img[i, j, c] = np.sum(M[:,:,c]*k)+128
+    #new_img+=128
     new_img=np.clip(new_img,0,255)
     return new_img
     
