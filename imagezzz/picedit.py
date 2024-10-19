@@ -81,7 +81,16 @@ def embossed(image):
     
 
 def rectangle_select(image, x, y):
-    return np.array([]) # to be removed when filling this function
+    #top left
+    x1,y1=x
+    #bot right
+    x2,y2=y
+    #zero matrix
+    new_mask=np.zeros((image.shape[0],image.shape[1]))
+    #apply filter with slicing
+    new_mask[x1:x2+1,y1:y2+1]=1
+    return new_mask
+    
 
 def magic_wand_select(image, x, thres):                
     return np.array([]) # to be removed when filling this function
@@ -252,7 +261,7 @@ s          Save the current picture
                 case '4':
                     try:
                         img=blur_effect(img)
-                        print('\\Blur Effect Is Successful!\n')
+                        print('Blur Effect Is Successful!\n')
                         menu1(img,mask)
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
@@ -283,7 +292,40 @@ s          Save the current picture
                     break
 
                 case '7':
-                    pass
+                    try:
+                        x=input('Enter Your top left X coordinate x1,y1: ')
+                        resX =[int(x) for x in (x.split(','))]
+                        resX=tuple(resX)
+                    except:
+                        print('Invalid X coordinate input!(include the coma, if u have not)')
+                        print('Bringing you back to menu...\n')
+                        menu1(img,mask)
+                    try:
+                        Y=input('Enter Your bottom right Y coordinate x2,y2: ')
+                        resY =[int(Y) for Y in (Y.split(','))]
+                        resY=tuple(resY)
+                    except:
+                        print('Invalid Y coordinate input!(include the coma, if u have not)')
+                        print('Bringing you back to menu...\n')
+                        menu1(img,mask)
+                    if resX[0]<0 or resX[0]<0 or resY[0]>=img.shape[0] or resY[1]>=img.shape[1]:
+                        print('Coordinates are out of bounds!')
+                        print('Bringing you back to menu...\n')
+                        menu1(img,mask)
+                    if resX[0]>resY[0] or resX[1]>resY[1]:
+                        print('Your X coordinate must be top left and Y coordinate must be bottom left!')
+                        print('Bringing You back to menu...\n') 
+                        menu1(img,mask)
+
+                    """try:""" 
+                    mask=rectangle_select(img,resX,resY)
+                    print('\nRectangle Select Done Successfully!\n')
+                    menu1(img,mask)
+                    """except:
+                        print('\nSomething went wrong! Bring you back to menu...\n')
+                        menu1(img,mask)"""
+
+                        
                     break
 
                 case '8':
