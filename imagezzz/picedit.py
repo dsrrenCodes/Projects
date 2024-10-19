@@ -318,13 +318,13 @@ s          Save the current picture
                         print('Bringing You back to menu...\n') 
                         menu1(img,mask)
 
-                    """try:""" 
-                    mask=rectangle_select(img,resX,resY)
-                    print('\nRectangle Select Done Successfully!\n')
-                    menu1(img,mask)
-                    """except:
+                    try:
+                        mask=rectangle_select(img,resX,resY)
+                        print('\nRectangle Select Done Successfully!\n')
+                        menu1(img,mask)
+                    except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
-                        menu1(img,mask)"""
+                        menu1(img,mask)
 
                         
                     break
