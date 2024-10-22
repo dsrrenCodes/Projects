@@ -293,40 +293,45 @@ s          Save the current picture
                     break
 
                 case '7':
-                    try:
-                        x=input('Enter Your top left X coordinate x1,y1: ')
-                        resX =[int(x) for x in (x.split(','))]
-                        resX=tuple(resX)
-                    except:
-                        print('Invalid X coordinate input!(include the coma, if u have not)')
-                        print('Bringing you back to menu...\n')
-                        menu1(img,mask)
-                    try:
-                        Y=input('Enter Your bottom right Y coordinate x2,y2: ')
-                        resY =[int(Y) for Y in (Y.split(','))]
-                        resY=tuple(resY)
-                    except:
-                        print('Invalid Y coordinate input!(include the coma, if u have not)')
-                        print('Bringing you back to menu...\n')
-                        menu1(img,mask)
-                    if resX[0]<0 or resX[0]<0 or resY[0]>=img.shape[0] or resY[1]>=img.shape[1]:
-                        print('Coordinates are out of bounds!')
-                        print('Bringing you back to menu...\n')
-                        menu1(img,mask)
-                    if resX[0]>resY[0] or resX[1]>resY[1]:
-                        print('Your X coordinate must be top left and Y coordinate must be bottom left!')
-                        print('Bringing You back to menu...\n') 
-                        menu1(img,mask)
+                    while True:
+                        try:
+                            x=input('Enter Your top left X coordinate x1,y1: ').replace(' ',',')
 
-                    try:
-                        mask=rectangle_select(img,resX,resY)
-                        print('\nRectangle Select Done Successfully!\n')
-                        menu1(img,mask)
-                    except:
-                        print('\nSomething went wrong! Bring you back to menu...\n')
-                        menu1(img,mask)
+                            resX =[int(x) for x in (x.split(','))]
+                            assert len(resX)==2
+                            resX=tuple(resX)
+                        except:
+                            print('Invalid X coordinate input!(include the coma/need 2 x values, if u have not)')
+                            print('Try Again\n')
+                            continue
+                        try:
+                            Y=input('Enter Your bottom right Y coordinate x2,y2: ').replace(' ',',')
+                            resY =[int(Y) for Y in (Y.split(','))]
+                            assert len(resY)==2
+                                
+                            resY=tuple(resY)
+                        except:
+                            print('Invalid Y coordinate input!(include the coma/need 2 y values, if u have not)')
+                            print('Try Again\n')
+                            continue
+                        if resX[0]<0 or resX[0]<0 or resY[0]>=img.shape[0] or resY[1]>=img.shape[1]:
+                            print('Coordinates are out of bounds!')
+                            print('Try Again\n')
+                            continue
+                        if resX[0]>resY[0] or resX[1]>resY[1]:
+                            print('Your X coordinate must be top left and Y coordinate must be bottom left!')
+                            print('Try Again\n') 
+                            continue
 
-                        
+                        try:
+                            mask=rectangle_select(img,resX,resY)
+                            print('\nRectangle Select Done Successfully!\n')
+                            
+                        except:
+                            print('\nSomething went wrong! Bring you back to menu...\n')
+                            menu1(img,mask)
+
+                        break
                     break
 
                 case '8':
@@ -338,7 +343,7 @@ s          Save the current picture
                     print('Please enter a valid Input\n')
                     menu1()
 
-                    break
+                    continue
 
 #FIRST STEP_____________________________________
 
