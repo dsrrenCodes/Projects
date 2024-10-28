@@ -6,7 +6,7 @@ import matplotlib.image as mpimg
 def change_brightness(image, value):
     new_img=image.copy()
     #clip for extra precaution but the menu1 should check for proper user input
-    new_img=np.clip(new_img+value,0,255)
+    new_img=np.clip(new_img+value,0,255).astype(np.uint8)
     
     return new_img
   
@@ -15,7 +15,7 @@ def change_contrast(image, value):
     contrast_f= (259*(value+255))/(255*(259-value))
     new_img=contrast_f*(new_img-128)+128
     #clipping for extraprecaution
-    new_img=np.clip(new_img,0,255)
+    new_img=np.clip(new_img,0,255).astype(np.uint8)
     return new_img
     
 
@@ -29,6 +29,7 @@ def grayscale(image):
             new_r,new_g,new_b=gray_value,gray_value,gray_value
             #replacing original values to gray values
             new_img[i,j]=[new_r,new_g,new_b]
+    new_img=new_img.astype(np.uint8)
 
     return new_img
     
@@ -45,6 +46,7 @@ def blur_effect(image):
             for c in range(new_img.shape[2]):
                 #not mat mul is element wise multiplication
                 new_img[i, j, c] =np.sum(M[:,:,c]*k)
+    new_img=new_img.astype(np.uint8)
     return new_img
     
 
@@ -62,6 +64,7 @@ def edge_detection(image):
     #new_img+=128
     #cuz q need clip ;p
     new_img=np.clip(new_img,0,255)
+    new_img=new_img.astype(np.uint8)
     return new_img
     
 
@@ -78,6 +81,7 @@ def embossed(image):
                 new_img[i, j, c] = np.sum(M[:,:,c]*k)+128
     #new_img+=128
     new_img=np.clip(new_img,0,255)
+    new_img=new_img.astype(np.uint8)
     return new_img
     
 
@@ -230,6 +234,7 @@ s          Save the current picture
                     
                     img = change_brightness(img,num)
                     print('\nBrightness Changed Successfully!\n')
+                    display_image(img,mask)
                     break
 
                 case '2':
@@ -247,13 +252,17 @@ s          Save the current picture
                         menu1(img,mask)
                     img = change_contrast(img,num)
                     print('\nContrast Changed Successfully!\n')
+                    display_image(img,mask)
+
                     break
                 
                 case '3':
                     try:
                         img = grayscale(img)
                         print('\nGrayScaled Effect Is Successful!\n')
+                        display_image(img,mask)
                         menu1(img,mask)
+                        
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
                         menu1(img,mask)
@@ -263,7 +272,9 @@ s          Save the current picture
                     try:
                         img=blur_effect(img)
                         print('Blur Effect Is Successful!\n')
+                        display_image(img,mask)
                         menu1(img,mask)
+                        
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
                         menu1(img,mask)
@@ -274,7 +285,9 @@ s          Save the current picture
                     try:
                         img=edge_detection(img)
                         print('\n Edge Detection Effect Is Successful!\n')
+                        display_image(img,mask)
                         menu1(img,mask)
+                        
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
                         menu1(img,mask)
@@ -285,7 +298,9 @@ s          Save the current picture
                     try:
                         img=embossed(img)
                         print('\n Embossed Effect Is Successful!\n')
+                        display_image(img,mask)
                         menu1(img,mask)
+                        
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
                         menu1(img,mask)
@@ -301,7 +316,7 @@ s          Save the current picture
                             assert len(resX)==2
                             resX=tuple(resX)
                         except:
-                            print('Invalid X coordinate input!(include the coma/need 2 x values, if u have not)')
+                            print('Invalid X coordinate input!(include 1 coma/need 2 x values, if u have not)')
                             print('Try Again\n')
                             continue
                         try:
@@ -311,7 +326,7 @@ s          Save the current picture
                                 
                             resY=tuple(resY)
                         except:
-                            print('Invalid Y coordinate input!(include the coma/need 2 y values, if u have not)')
+                            print('Invalid Y coordinate input!(include 1 coma/need 2 y values, if u have not)')
                             print('Try Again\n')
                             continue
                         if resX[0]<0 or resX[0]<0 or resY[0]>=img.shape[0] or resY[1]>=img.shape[1]:
@@ -326,6 +341,7 @@ s          Save the current picture
                         try:
                             mask=rectangle_select(img,resX,resY)
                             print('\nRectangle Select Done Successfully!\n')
+                            display_image(img,mask)
                             
                         except:
                             print('\nSomething went wrong! Bring you back to menu...\n')
@@ -341,7 +357,7 @@ s          Save the current picture
                 case _:
                     print('\n\n')
                     print('Please enter a valid Input\n')
-                    menu1()
+                    menu1(img,mask)
 
                     continue
 
