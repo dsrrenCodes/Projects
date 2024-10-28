@@ -360,7 +360,7 @@ s          Save the current picture
                             
                         except:
                             print('\nSomething went wrong! Bring you back to menu...\n')
-                            menu1(img,mask)
+                            #menu1(img,mask)
 
                         break
                     #break
@@ -372,7 +372,7 @@ s          Save the current picture
                 case _:
                     print('\n\n')
                     print('Please enter a valid Input\n')
-                    menu1(img,mask)
+                    #menu1(img,mask)
 
                     continue
 
