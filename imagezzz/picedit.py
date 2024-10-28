@@ -91,7 +91,7 @@ def rectangle_select(image, x, y):
     #bot right
     x2,y2=y
     #zero matrix
-    new_mask=np.zeros((image.shape[0],image.shape[1]))
+    new_mask=np.zeros((image.shape[0],image.shape[1]),dtype=np.uint8)
     #apply filter with slicing
     new_mask[x1:x2+1,y1:y2+1]=1
     return new_mask
@@ -199,10 +199,10 @@ s          Save the current picture
 
                     except FileNotFoundError:
                         print(f'\n{filename} file name not found, please enter a valid file name.\n------------------------------------------------ ')
-                        menu1(img,mask)
+                        #menu1(img,mask)
                     
                     
-                    break
+                    #break
 
                 case 's':
                     try:
@@ -211,31 +211,38 @@ s          Save the current picture
                         print('\nImage Succesfully Saved!\n')
                     except:
                         print('Something Went Wrong! Ensure your file ends with ".png/.jpg/.jpeg! Bringing you back to menu...')
-                        menu1(img,mask)
+                        #menu1(img,mask)
                     
 
-                    break
+                    #break
                 
                 case '1':
                     num=input('\nEnter Brightness Value (+/-): \n')
+
                     try:
                         
                         num=int(num)
                         if num<=-255 or num>=255:
                             print(f'\n{num} is not a valid input! Please ensure your input is between -255 and +255. Bringing you back to menu...\n')
-                            menu1(img,mask)
+                            continue
+                            
                         
                         
                     except:
                         print(f'\n{num} is not a valid input! Bringing you back to menu...\n')
-                        menu1(img,mask)
+                        
+                        
 
                     
                     
-                    img = change_brightness(img,num)
-                    print('\nBrightness Changed Successfully!\n')
-                    display_image(img,mask)
-                    break
+                    else:
+                        new_img = change_brightness(img,num)
+                        img[mask == 1] = new_img[mask == 1]
+
+                        print('\nBrightness Changed Successfully!\n')
+                        display_image(img,mask)
+                    
+                    #break
 
                 case '2':
                     num=input('\nEnter Contrast Value (+/-): \n')
@@ -244,68 +251,76 @@ s          Save the current picture
                         num=int(num)
                         if num<=-255 or num>=255:
                             print(f'\n{num} is not a valid input! Please ensure your input is between -255 and +255. Bringing you back to menu...\n')
-                            menu1(img,mask)
+                            #menu1(img,mask)
                         
                         
                     except:
                         print(f'\n{num} is not a valid input! Bringing you back to menu...\n')
-                        menu1(img,mask)
-                    img = change_contrast(img,num)
-                    print('\nContrast Changed Successfully!\n')
-                    display_image(img,mask)
+                        #menu1(img,mask)
 
-                    break
+                    else:
+                        new_img = change_contrast(img,num)
+                        img[mask == 1] = new_img[mask == 1]
+                        print('\nContrast Changed Successfully!\n')
+                        display_image(img,mask)
+
+                    #break
                 
                 case '3':
                     try:
-                        img = grayscale(img)
+                        new_img = grayscale(img)
+                        img[mask == 1] = new_img[mask == 1]
                         print('\nGrayScaled Effect Is Successful!\n')
                         display_image(img,mask)
-                        menu1(img,mask)
+                        #menu1(img,mask)
                         
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
-                        menu1(img,mask)
-                    break
+                        #menu1(img,mask)
+
+                    #break
                 
                 case '4':
                     try:
-                        img=blur_effect(img)
+                        new_img=blur_effect(img)
+                        img[mask == 1] = new_img[mask == 1]
                         print('Blur Effect Is Successful!\n')
                         display_image(img,mask)
-                        menu1(img,mask)
+                        #menu1(img,mask)
                         
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
-                        menu1(img,mask)
+                        #menu1(img,mask)
 
-                    break
+                    #break
 
                 case '5':
                     try:
-                        img=edge_detection(img)
+                        new_img=edge_detection(img)
+                        img[mask == 1] = new_img[mask == 1]
                         print('\n Edge Detection Effect Is Successful!\n')
                         display_image(img,mask)
-                        menu1(img,mask)
+                        #menu1(img,mask)
                         
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
-                        menu1(img,mask)
+                        #menu1(img,mask)
 
-                    break
+                    #break
 
                 case '6':
                     try:
-                        img=embossed(img)
+                        new_img=embossed(img)
+                        img[mask == 1] = new_img[mask == 1]
                         print('\n Embossed Effect Is Successful!\n')
                         display_image(img,mask)
-                        menu1(img,mask)
+                        #menu1(img,mask)
                         
                     except:
                         print('\nSomething went wrong! Bring you back to menu...\n')
-                        menu1(img,mask)
+                        #menu1(img,mask)
 
-                    break
+                    #break
 
                 case '7':
                     while True:
@@ -348,7 +363,7 @@ s          Save the current picture
                             menu1(img,mask)
 
                         break
-                    break
+                    #break
 
                 case '8':
                     pass
