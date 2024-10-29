@@ -344,8 +344,14 @@ s          Save the current picture
                             print('Invalid Y coordinate input!(include 1 coma/need 2 y values, if u have not)')
                             print('Try Again\n')
                             continue
+                        #print(img.shape)
+                        #print(img.shape[0],img.shape[1])
+                        #print(f'resX:{resX}')
+                        #print(f'resY:{resY}')
                         if resX[0]<0 or resX[0]<0 or resY[0]>=img.shape[0] or resY[1]>=img.shape[1]:
                             print('Coordinates are out of bounds!')
+                            print(f'X coordinate must be less than {img.shape[0]}')
+                            print(f'Y coordinate must be less than {img.shape[1]}')
                             print('Try Again\n')
                             continue
                         if resX[0]>resY[0] or resX[1]>resY[1]:
