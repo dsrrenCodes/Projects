@@ -97,8 +97,36 @@ def rectangle_select(image, x, y):
     return new_mask
     
 
-def magic_wand_select(image, x, thres):                
-    return np.array([]) # to be removed when filling this function
+def magic_wand_select(image, x, thres):
+    new_mask=np.zeros((image.shape[0],image.shape[1]),dtype=np.uint8)
+    connected = [(x[0],x[1])]
+    stack = [(x[0],x[1])]
+    new_mask[x[0],x[1]] = 2 
+    #ref pixel
+    pixel1 = image[x[0],x[1]]
+    while stack:
+        i = stack.pop(0)
+        for x,y in [(-1,0),(1,0),(0, -1),(0, 1)]:
+            neighbor=(i[0]+x,i[1]+y)
+
+            #boundary check
+            if 0<=neighbor[0]<image.shape[0] and 0<=neighbor[1]<image.shape[1] and new_mask[neighbor[0],neighbor[1]]==0:
+                pixel2=image[neighbor[0],neighbor[1]]
+                #variables for formula
+                r,a,b,c=(pixel1[0]+pixel2[0])/2 , pixel1[0]-pixel2[0],pixel1[1]-pixel2[1],pixel1[2]-pixel2[2]
+                dist = np.sqrt((2+r/256)*(a**2)+4*(b**2)+(2+(255-r)/256)*(c**2))
+
+                if dist<thres:
+                    #if within threshold, mark as connected and append to the stack
+                    connected.append(neighbor)
+                    stack.append(neighbor)
+                    new_mask[neighbor[0], neighbor[1]] = 2  
+                else:
+                    #outside threshold
+                    new_mask[neighbor[0], neighbor[1]] = 1  
+
+    new_mask= (new_mask==2).astype(np.uint8)
+    return new_mask
 
 def compute_edge(mask):           
     rsize, csize = len(mask), len(mask[0]) 
@@ -348,10 +376,10 @@ s          Save the current picture
                         #print(img.shape[0],img.shape[1])
                         #print(f'resX:{resX}')
                         #print(f'resY:{resY}')
-                        if resX[0]<0 or resX[0]<0 or resY[0]>=img.shape[0] or resY[1]>=img.shape[1]:
+                        if resX[0]<0 or resX[1]<0 or resY[0]>=img.shape[0] or resY[1]>=img.shape[1]:
                             print('Coordinates are out of bounds!')
-                            print(f'X coordinate must be less than {img.shape[0]}')
-                            print(f'Y coordinate must be less than {img.shape[1]}')
+                            print(f'X coordinate must be less than {img.shape[0]} and more than 0!')
+                            print(f'Y coordinate must be less than {img.shape[1]} and more than 0!')
                             print('Try Again\n')
                             continue
                         if resX[0]>resY[0] or resX[1]>resY[1]:
@@ -372,8 +400,41 @@ s          Save the current picture
                     #break
 
                 case '8':
-                    pass
-                    break
+                    while True:
+                        try:
+                            x=input('Enter the starting coordinate (x,y): ').replace(' ',',')
+
+                            resX =[int(x) for x in (x.split(','))]
+                            assert len(resX)==2
+                            resX=tuple(resX)
+                        except:
+                            print('Invalid coordinate input!(include 1 coma/need (x,y) values, if u have not)')
+                            print('Try Again\n')
+                            continue
+                        if resX[0]<0 or resX[1]<0 or resX[0]>=img.shape[0] or resX[1]>=img.shape[1]:
+                            print('Coordinates are out of bounds!')
+                            print(f'X coordinate must be less than {img.shape[0]} and more than 0!')
+                            print(f'Y coordinate must be less than {img.shape[1]} and more than 0!')
+                            print('Try Again\n')
+                            continue
+                        try:
+                            #print(f'mask: {len(mask[0])}')
+                            threshold = float(input("Enter the color similarity threshold >0: "))
+                            if threshold<0:
+                                print('Threshold cannot be less than 0!')
+                                print('Try again!\n')
+                                continue
+                        except:
+                            print('Enter a valid threshold: it should be a number! ')
+                            print('Try Again!\n')
+                            continue
+                        break
+
+                    mask=magic_wand_select(img,resX,threshold)
+                    print('Magic Wand Done Successfully!\n')
+                    display_image(img,mask)
+
+                    
 
                 case _:
                     print('\n\n')
