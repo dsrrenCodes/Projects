@@ -12,7 +12,7 @@
 - Cleaned the text by removing redundant elements using regex
 - Eliminated stop words and applied lemmatization to standardize word forms using NLTK  
 - Vectorized text into numbers using sklearn for model
-- Corrected spelling errors using the SymSpellPy library for enhanced text consistenc
+- Corrected spelling errors using the SymSpellPy library for enhanced text consistency
 
 3. Model Development:
 - Developed a simple LSTM model using PyTorch
