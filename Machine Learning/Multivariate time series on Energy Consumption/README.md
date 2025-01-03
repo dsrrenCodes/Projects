@@ -8,7 +8,8 @@
  The models can be found below
 
  Original Dataset Distribution: 
- 
+ ![image](https://github.com/user-attachments/assets/e55b927c-0745-427e-9798-fb5e270da343)
+
 ## Workflow
 
 1. EDA
@@ -31,11 +32,18 @@
 
 ## Model Performances
 ## RNN Results
+![rnn result1](https://github.com/user-attachments/assets/b79a828a-48e1-4e1d-97b7-df7ba8e757f3)
+
 
 ## LSTM Results
+![lstm result](https://github.com/user-attachments/assets/d876ae3d-c89f-4242-ae31-c26c7c2247cc)
 
 ## GRU Results
+![gru result](https://github.com/user-attachments/assets/60268590-ed97-49bf-9a74-64290bacc2e2)
 
 ## Ridge Regression Results
+![Ridge Regression Result](https://github.com/user-attachments/assets/1c3417b4-4065-4b27-bc59-a95de2f975b6)
 
 ## Random Forest Regressor Results
+![Random Forest regressor result](https://github.com/user-attachments/assets/c4689da3-0f3c-43d0-ae96-1f563f75b7c9)
+
