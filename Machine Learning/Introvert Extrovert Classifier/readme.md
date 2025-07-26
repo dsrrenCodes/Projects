@@ -12,6 +12,7 @@ Pipeline Schema
 
 
 ## Pipeline Schema
+<img width="469" height="265" alt="image" src="https://github.com/user-attachments/assets/6555bd84-9c91-424d-978c-f6ce6ed5b4f9" />
 
 
 
